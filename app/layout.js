@@ -1,5 +1,6 @@
 import './globals.css'
 import { Poppins } from 'next/font/google';
+import NavBar from './shared-components/NavBar/NavBar';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -10,16 +11,15 @@ const poppins = Poppins({
 
 export const metadata = {
   title: 'Shag n Wag Grooming',
-  description: 'Created by austinbarne.dev',
+  description: 'Created by austinbarnes.dev',
 }
 
 export default function RootLayout({ children }) {
  return (
     <html lang="en">
-      <body>
-        <main className='mx-52'>
-          {children}
-        </main>
+      <body className='lg:w-10/12 mx-auto'>
+        <NavBar />
+        {children}
       </body>
     </html>
   )
