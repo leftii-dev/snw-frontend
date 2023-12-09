@@ -1,5 +1,5 @@
 export default function AccountPage() {
     return (
-        <div>Account page</div>
+        <div className='h-full'>Account page</div>
     )
 }
