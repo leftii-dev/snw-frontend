@@ -6,11 +6,10 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        'text': 'var(--font-poppins)'
-      }
-    },
+    fontFamily: {
+      'text': 'var(--font-poppins)',
+      'display': 'var(--font-playfair-display)'
+    }
   },
   plugins: [],
 }
