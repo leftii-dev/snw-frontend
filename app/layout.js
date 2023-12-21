@@ -1,7 +1,7 @@
 import './globals.css'
 import { Poppins, Playfair_Display } from 'next/font/google';
-import NavBar from './shared-components/NavBar/NavBar';
-import Footer from './shared-components/NavBar/Footer';
+import Footer from './(shared-components)/Footer/Footer';
+import NavBar from './(shared-components)/NavBar/NavBar';
 
 const poppins = Poppins({
   subsets: ['latin'],

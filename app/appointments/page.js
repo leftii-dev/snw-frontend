@@ -1,5 +1,7 @@
-export default function AppointmentsPage() {
+export default async function AppointmentsPage() {
+    console.log('Appointment Rendered')
     return (
-        <div className='h-full'>Appointments page</div>
+        <div className='h-full'>
+        </div>
     )
 }

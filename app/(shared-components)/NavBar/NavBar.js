@@ -4,13 +4,28 @@ import logoImage from '../../../public/images/logo.jpg'
 import Link from 'next/link'
 import NavLink from './NavLink'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
-import Bars from '@iconscout/react-unicons/icons/uil-bars'
-import Close from '@iconscout/react-unicons/icons/uil-multiply'
+import { useState, useEffect } from 'react'
+import { FaBars } from 'react-icons/fa6'
+import { FaX } from 'react-icons/fa6'
+import LoginButton from './LoginButton'
 
 export default function NavBar () {
-    const [expanded, setExpanded] = useState(false)
+    console.log('NavBar Rendered')
+    const [expanded, setExpanded] = useState(false) 
+    const [loggedIn, setLoggedIn] = useState(false)   
     const currentPath = usePathname()
+
+    useEffect(() => {
+        const checkLoginStatus = async () => {
+            const res = await fetch('api/users/self', {
+                    method: 'GET',
+                }
+            )
+
+            setLoggedIn(res.ok ? true : false)
+        }
+        checkLoginStatus()
+    }, [currentPath])
     const navRoutes = [
         {url: '/', text:'home'},
         {url: '/appointments', text:'appointments'},
@@ -35,19 +50,20 @@ export default function NavBar () {
             <div  id='links' className={`${expanded ? 'flex-grow w-full ' : '' }lg:w-auto lg:flex-grow`}>
                 {
                     expanded 
-                    ?
-                        <Close size={40} color='black' onClick={() => setExpanded(false)} className='ml-auto w-full hover:cursor-pointer hover:scale-90 lg:hidden' />
+                    ? 
+                        <FaX size={40} color='black' onClick={() => setExpanded(false)} className='ml-auto w-full hover:cursor-pointer hover:scale-90 lg:hidden' />
                     :
-                        <Bars size={40} color='black' onClick={() => setExpanded(true)} className='ml-auto w-full hover:cursor-pointer hover:scale-90 lg:hidden' />
+                        <FaBars size={40} color='black' onClick={() => setExpanded(true)} className='ml-auto w-full hover:cursor-pointer hover:scale-90 lg:hidden' />
                 }
                         <ul className={`${!expanded ? 'hidden' : ''} flex-col flex-grow items-center lg:flex lg:flex-row lg:justify-between lg:ml-10`}>
                         {
                             navRoutes.map((navRoute) => (
-                                <li key={navRoute.url} className='py-2 border-b w-full lg:w-auto lg:border-b-0'>
+                                <li key={navRoute.url} className='px-2 py-2 border-b w-full lg:w-auto lg:border-b-0'>
                                     <NavLink active={currentPath === navRoute.url} href={navRoute.url} text={navRoute.text} />
                                 </li>
                             ))
                         }
+                            <li className='p-2'><LoginButton loggedIn={loggedIn}/></li>
                         </ul>
                 
             </div>

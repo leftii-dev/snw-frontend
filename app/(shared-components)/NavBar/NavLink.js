@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 export default function NavLink({href, text, active}) {
+    console.log(`NavLink(${text}) Rendered`)
     return (
         <>
             <Link href={href} className='peer uppercase font-text whitespace-nowrap block w-full lg:w-fit'>{text}</Link>

@@ -1,5 +1,11 @@
-export default function AccountPage() {
+export default async function AccountPage() {
+    console.log('Account Rendered')
     return (
-        <div className='h-full'>Account page</div>
+        
+        <main className='w-full bg-[#7EBBFB22]'>
+            <div className='w-10/12 mx-auto'>
+            </div>
+            
+        </main>
     )
 }

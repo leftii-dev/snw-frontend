@@ -8,15 +8,16 @@ import Dog_Tall from '../public/images/english_bulldog.jpg'
  
 
 export default function Home() {
+  console.log('Home Rendered')
   return (
     <main className='flex flex-row w-full bg-[#7EBBFB22]'>
-      <div id='content-wrapper' className='flex flex-row flex-shrink w-10/12 mx-auto'>
-           <div id='left-content-wrapper' className='flex flex-col w-5/12'>
+      <div id='content-wrapper' className='flex flex-row flex-wrap flex-shrink w-10/12 mx-auto xl:flex-nowrap'>
+           <div id='left-content-wrapper' className='flex flex-col xl:w-5/12'>
               <h1 className='font-display text-5xl leading-tight my-4'>Where Tail Wagging Meets Top-Notch Grooming</h1>
               <p className='font-text text-xl font-light leading-relaxed my-4'>
                 Your full service and cage-free salon. With over 20 years experience, we handle all breeds, 
                 all sizes, and all ages. Some extra filler text here, just to help with alignment. Want to make 
-                sure there aren't any giant white space areas on the page.
+                sure there aren&apos;t any giant white space areas on the page.
               </p>
               <div id='cta-content-wrapper' className='mt-10'>
                 <div id='cta-content' className='flex flex-row items-center space-x-36'>
@@ -32,39 +33,41 @@ export default function Home() {
                     </div>
                   </Link>
                 </div>
-                <div id='banner-content' className='flex flex-row border border-black rounded-lg py-8 px-6 mt-32'>
-                <Image src={CelebrateImage}
-                  className='mr-6'
-                  alt='Party Trumpet'
-                />
+                <div id='banner-content' className='hidden xl:flex flex-row border border-black rounded-lg py-8 px-6 mt-20 w-full'>
+                  <div className='flex flex-col w-1/3 mx-3'>
+                    <Image src={CelebrateImage}
+                      className='object-cover aspect-auto'
+                      alt='Party Trumpet'
+                    />
+                  </div>
                 <p className='font-text font-light'>We’re excited to celebrate our first great year of <span className='font-bold'>Shag n Wag</span> grooming with you! We couldn’t have done it without you and can’t wait for the future!</p>
                 </div>
               </div>
            </div>
            <div className='w-1/12'></div>
-           <div id='gallery-wrapper' className='flex-wrap flex flex-row flex-shrink xl:ml-10 xl:w-5/12 my-6 gap-6 xl:flex-nowrap xl:flex-grow'>
-            <div id='gallery-left-wrapper' className='flex'>
-              <div id='gallery-left' className='flex flex-col'>
-                <Image className='object-cover object-top aspect-auto flex-shrink xl:flex-grow rounded-xl'
+           <div id='gallery-wrapper' className='flex-wrap flex flex-row  xl:ml-10 xl:w-5/12 my-6 gap-6 xl:flex-nowrap xl:flex-grow'>
+              <div id='gallery-left' className='flex'>
+                <Image className='object-cover object-top aspect-auto rounded-xl'
                   src={Dog_Tall}
                   alt='Freshly Groomed Poodle'
                   />
               </div>
-            </div>
+
             <div id='gallery-right' className='flex flex-col gap-6'>
-              <div id='gallery-top-right' className='flex flex-row'>
+              <div id='gallery-top-right' className='flex'>
                 <Image className='object-cover object-right-top aspect-square rounded-xl'
                   src={Dog_001}
                   alt='Freshly Groomed Poodle'
                 />
               </div>
-              <div id='gallery-bottom-right' className='flex flex-row'>
+              <div id='gallery-bottom-right' className='flex'>
                 <Image className='object-cover object-top aspect-square rounded-xl'
                   src={Dog_002}
                   alt='Happy English Bulldog'
                 />
               </div>
             </div>
+            <div className='flex-grow'></div>
           </div>
         </div>
     </main>
