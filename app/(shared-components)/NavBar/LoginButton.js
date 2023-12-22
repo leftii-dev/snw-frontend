@@ -1,11 +1,12 @@
 'use client'
 import {useState} from 'react'
 import LoginModal from './LoginModal'
+import { useRouter } from 'next/navigation'
 
 export default function LoginButton({ loggedIn }) {
+    const router = useRouter()
     const [showModal, setShowModal] = useState(false)
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [loginError, setLoginError] = useState(null)
 
     console.log('LoginButton Rendered')
 
@@ -25,13 +26,15 @@ export default function LoginButton({ loggedIn }) {
 
         if(!res.ok){
             throw new Error('Unable to logout, are you signed in?')
+        } else {
+            router.push('/')
         }
 
-        return res.body
     }
     
     const handleSignIn = async (event) => {
         event.preventDefault()
+        setLoginError(null)
         const res = await fetch('/login', {
             method: 'POST',
             body: new URLSearchParams({
@@ -43,13 +46,13 @@ export default function LoginButton({ loggedIn }) {
             }
         })
 
-        if(!res.ok){
-            console.error(res.body)
-
-            throw new Error('Unable to login')
+        if(res.ok){
+            setShowModal(false)
+            router.push('/account')
+            return res.json()
         }
-
-        return res.json()
+        console.error(res.body)
+        setLoginError('Login Failed. Check Email and Password and Try Again.')
     }
 
     return (
@@ -62,7 +65,7 @@ export default function LoginButton({ loggedIn }) {
                         'Sign In'
                 }
             </button>
-            <LoginModal handleSignIn={handleSignIn} setEmail={setEmail} setPassword={setPassword} setShowModal={setShowModal} showModal={showModal}/>
+            <LoginModal handleSignIn={handleSignIn} setShowModal={setShowModal} showModal={showModal} loginError={loginError}/>
         </>
     )
 }

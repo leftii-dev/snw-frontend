@@ -13,6 +13,11 @@ export function middleware(req) {
         const newPath = pathname.replace('/login', process.env.LOGIN_URL)
         return NextResponse.rewrite(new URL(newPath))
     }
+    if(pathname.startsWith('/oauth-google')) {
+        const newPath = pathname.replace('/oauth-google', process.env.OAUTH_GOOGLE_URL)
+        console.log('NEW PATH: ' + newPath)
+        return NextResponse.redirect(new URL(newPath))
+    }
 
     return NextResponse.next()
 }
