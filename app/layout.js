@@ -25,7 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
  return (
     <html lang="en" className={`w-full ${poppins.variable} ${playfair_display.variable}`}>
-      <body className='flex flex-col'>
+      <body className='flex flex-col min-h-screen'>
         <NavBar />
         {children}
         <Footer />

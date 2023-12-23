@@ -5,7 +5,7 @@ import { FaFacebook, FaFacebookMessenger, FaSquareInstagram, FaPhoneFlip, FaEnve
 export default function Footer() {
     console.log('Footer Rendered')
     return (
-        <footer className='flex flex-grow bg-[#ECBE9C]'>
+        <footer className='flex bg-[#ECBE9C]'>
             <div id="footer-content-wrapper" className='w-10/12 mx-auto lg:pt-5'>
                 <div className='flex flex-row w-full'>
                     <div id='footer-phrase' className='flex flex-col lg:w-1/3 lg:p-3'>

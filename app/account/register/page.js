@@ -12,7 +12,7 @@ export default function Register() {
     }
 
     return (
-        <main className='w-full bg-[#7EBBFB22]'>
+        <main className='flex flex-1 w-full bg-[#7EBBFB22]'>
             <div className='flex flex-col w-10/12 mx-auto'>
             <h1 className='font-display text-3xl'>New User Registration</h1>
                 <form className='flex flex-col w-fit' onSubmit={handleRegistration}>
